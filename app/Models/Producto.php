@@ -39,6 +39,6 @@ class Producto extends Model
 
     public function getImagenUrlAttribute()
     {
-        return $this->img_path ? Storage::url($this->img_path) : Storage::url('productos/noimage.png');
+        return $this->img_path ? $this->img_path : Storage::url('default/productos/noimage.png');
     }
 }

@@ -10,9 +10,9 @@ const isDark = ref(false);
 const { close } = useModal();
 
 const mensajes = {
-    403: { titulo: 'Acceso denegado',   descripcion: 'No tienes permiso para ver esta página.', img: '/storage/error/error403.webp' },
-    404: { titulo: 'Página no encontrada', descripcion: 'La página que buscas no existe.', img: '/storage/error/error404.png' },
-    default: { titulo: 'Algo salió mal', descripcion: 'Ocurrió un error inesperado.', img: '/storage/error/wrong.webp' }
+    403: { titulo: 'Acceso denegado',   descripcion: 'No tienes permiso para ver esta página.', img: '/storage/default/error/error403.webp' },
+    404: { titulo: 'Página no encontrada', descripcion: 'La página que buscas no existe.', img: '/storage/default/error/error404.png' },
+    default: { titulo: 'Algo salió mal', descripcion: 'Ocurrió un error inesperado.', img: '/storage/default/error/wrong.webp' }
 };
 
 const { titulo, descripcion, img } = mensajes[props.status] ?? mensajes['default'];

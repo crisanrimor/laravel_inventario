@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CloudinaryHelper;
 use App\Http\Requests\Producto\StoreRequest;
 use App\Http\Requests\Producto\UpdateRequest;
 use App\Models\Categoria;
@@ -54,7 +55,10 @@ class ProductoController extends Controller implements HasMiddleware
 
         try{
             if($request->hasFile('imagen')){
-                $path = $request->file('imagen')->store('productos', 'public');
+                $path = CloudinaryHelper::upload(
+                    $request->file('imagen')->getRealPath(),
+                    'inventario/productos'
+                );
                 $data['img_path'] = $path;
             }
 
@@ -73,7 +77,7 @@ class ProductoController extends Controller implements HasMiddleware
             return redirect()->route('dashboard.productos.index')->with('success', 'Producto creado con éxito.');
         }catch(\Throwable $th){
             DB::rollBack();
-            if ($path) Storage::disk('public')->delete($path);
+            if ($path) CloudinaryHelper::delete($path);
             return redirect()->route('dashboard.productos.index')->with('error', 'Ocurrió un error al crear el producto.');
         }
     }
@@ -87,11 +91,14 @@ class ProductoController extends Controller implements HasMiddleware
         $data['img_path'] = $producto->img_path;
 
         if($request->hasFile('imagen')){
-            $path = $request->file('imagen')->store('productos', 'public');
+            $path = CloudinaryHelper::upload(
+                $request->file('imagen')->getRealPath(),
+                'inventario/productos'
+            );
             $data['img_path'] = $path;
 
-            if($producto->img_path && Storage::disk('public')->exists($producto->img_path)){
-                Storage::disk('public')->delete($producto->img_path);
+            if($producto->img_path){
+                CloudinaryHelper::delete($producto->img_path);
             }
         }
 
@@ -109,8 +116,8 @@ class ProductoController extends Controller implements HasMiddleware
      */
     public function destroy(Producto $producto)
     {
-        if($producto->img_path && Storage::disk('public')->exists($producto->img_path)){
-            Storage::disk('public')->delete($producto->img_path);
+        if($producto->img_path){
+            CloudinaryHelper::delete($producto->img_path);
         }
 
         $producto->delete();

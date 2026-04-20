@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CloudinaryHelper;
 use App\Http\Requests\Perfil\UpdateImageRequest;
 use App\Http\Requests\Perfil\UpdatePasswordRequest;
-use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ProfileController extends Controller
@@ -35,10 +34,13 @@ class ProfileController extends Controller
     public function changeImage(UpdateImageRequest $request){
         $usuario = $request->user();
 
-        $path = $request->file('image')->store('usuarios', 'public');
+        $path = CloudinaryHelper::upload(
+            $request->file('image')->getRealPath(),
+            'inventario/usuarios'
+        );
 
-        if($usuario->image && Storage::disk('public')->exists($usuario->image)){
-            Storage::disk('public')->delete($usuario->image);
+        if($usuario->image){
+            CloudinaryHelper::delete($usuario->image);
         }
 
         $usuario->update([
