@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    /* Modo claro colores */
+    --color-light-base:           rgb(248 250 252);
+    --color-light-card:           rgb(255 255 255);
+    --color-light-secondary:      rgb(241 245 249);
+    --color-light-border:         rgb(226 232 240);
+    --color-light-text-title:     rgb(15  23  42);
+    --color-light-text-body:      rgb(51  65  85);
+    --color-light-text-muted:     rgb(100 116 139);
+    --color-light-action-primary: rgb(37  99  235);
+    --color-light-action-accent:  rgb(14  165 233);
+    --color-light-success:        rgb(16  185 129);
+    --color-light-danger:         rgb(239 68  68);
+    --color-light-warning:        rgb(245 158 11) ;
+    --color-light-neutral:        rgb(148 163 184);
+    --shadow-light-card: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+
+    /* Modo oscuro colores */
+    --color-dark-base:        rgb(11  19  38);
+    --color-dark-card:        rgb(19  27  46);
+    --color-dark-secondary:   rgb(19  27  46);
+    --color-dark-border:         rgb(255 255 255);
+    --color-dark-text-title:     rgb(255 255 255);
+    --color-dark-text-body:      rgb(241 245 249);
+    --color-dark-text-muted:     rgb(148 163 184);
+    --color-dark-text-disabled:  rgb(71  85  105);
+    --color-dark-action-primary: rgb(59  130 246);
+    --color-dark-action-accent:  rgb(14  165 233);
+    --glow-dark-primary: 0 0 24px rgb(59 130 246 / 0.3);
+    --glass-dark-bg: rgb(11 19 38 / 0.6);
+    --glass-dark-blur: blur(20px);
+
+    --color-tertiary: rgb(87 27 193);
+}
+
+@layer base{
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+}
