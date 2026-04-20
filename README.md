@@ -1,58 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📦 Sistema de Gestión de Inventarios
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicación web para la gestión de inventarios que permite administrar compras, ventas, movimientos de stock y control de accesos por usuario. Incluye un panel con métricas y gráficas para el análisis de ventas mensuales.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Demo
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> *(Opcional: agrega aquí el enlace cuando lo despliegues en Railway)*
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🖼️ Preview
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Dashboard](docs/images/panel.png)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## ✨ Funcionalidades
 
-## Agentic Development
+* 📥 Registro de **compras**
+* 📤 Registro de **ventas**
+* 🔄 Control de **movimientos de inventario**
+* 📊 Panel con **gráficas de ventas mensuales**
+* 👥 Sistema de **roles y permisos**
+* 🔍 Consulta de historial de movimientos
+* 📦 Gestión de productos
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🧰 Tecnologías utilizadas
 
-php artisan boost:install
-```
+* **Backend:** PHP (Laravel)
+* **Frontend:** Vue.js + Inertia.js
+* **Estilos:** TailwindCSS
+* **Base de datos:** MySQL
+* **Gráficas:** ApexCharts
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 📸 Capturas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 📦 Gestión de productos
 
-## Code of Conduct
+![Productos](docs/images/productos.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 💰 Registro de ventas
 
-## Security Vulnerabilities
+![Ventas](docs/images/ventas.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 📥 Gestión de roles
 
-## License
+![Compras](docs/images/roles.png)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 🔐 Roles y permisos
+
+El sistema cuenta con control de acceso basado en roles, permitiendo definir qué acciones puede realizar cada usuario dentro de la aplicación (por ejemplo: crear usuarios, registrar ventas, gestionar productos, etc.).
+
+---
+
+## 📊 Panel de estadísticas
+
+El dashboard incluye visualización de:
+
+* Ventas mensuales
+* Tendencias de ingresos
+* Entradas y salidas del inventario mensuales
+
+---
+
+## 🧠 Consideraciones
+
+* Proyecto desarrollado como MVP para portafolio
+* Arquitectura basada en Laravel + Inertia para integración backend/frontend
+* Preparado para escalar funcionalidades
+
+---
+
+## 📌 Próximas mejoras
+
+* Exportación de reportes (PDF/Excel)
+* Notificaciones en tiempo real
+* Integración con APIs externas
+* Mejoras en UI/UX
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por Cristian Rincon
+
+---
