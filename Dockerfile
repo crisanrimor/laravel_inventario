@@ -1,6 +1,6 @@
 FROM php:8.3-fpm-alpine
 
-# Dependencias del sistema necesarias para compilar extensiones
+# Dependencias del sistema
 RUN apk add --no-cache \
     bash \
     git \
@@ -33,12 +33,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
+# Instalar dependencias PHP y Node
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
+# Dar permisos
+RUN chmod -R 775 storage bootstrap/cache
+
+# Copiar y dar permisos al entrypoint
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 EXPOSE $PORT
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+CMD ["/app/entrypoint.sh"]
