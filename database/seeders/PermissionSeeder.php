@@ -45,17 +45,17 @@ class PermissionSeeder extends Seeder
 
         //Crear permisos
         foreach($permisos as $permiso){
-            Permission::create([
+            Permission::firstOrCreate([
                 'name' => $permiso
             ]);
         }
 
         // Crear Rol Admin
-        $rol = Role::create([
+        $rol = Role::firstOrCreate([
             'name' => 'Administrador'
         ]);
 
         //Asignar permisos al rol admin
-        $rol->givePermissionTo($permisos);
+        $rol->syncPermissions($permisos);
     }
 }
