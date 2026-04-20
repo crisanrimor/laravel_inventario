@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,6 +44,6 @@ class User extends Authenticatable
 
     public function getImagenUrlAttribute()
     {
-        return $this->image ? $this->image : Storage::url('default/usuarios/avatar.png');
+        return $this->image ? 'https://res.cloudinary.com/' . env('CLOUDINARY_CLOUD_NAME') . '/image/upload/' . $this->image : Storage::url('default/usuarios/avatar.png');
     }
 }
