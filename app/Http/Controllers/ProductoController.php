@@ -6,12 +6,10 @@ use App\Helpers\CloudinaryHelper;
 use App\Http\Requests\Producto\StoreRequest;
 use App\Http\Requests\Producto\UpdateRequest;
 use App\Models\Categoria;
-use App\Models\InventarioMovimiento;
 use App\Models\Producto;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ProductoController extends Controller implements HasMiddleware
@@ -65,11 +63,12 @@ class ProductoController extends Controller implements HasMiddleware
             $producto = Producto::create($data);
 
             if(isset($data['stock_actual']) && $data['stock_actual'] > 0){
-                InventarioMovimiento::create([
+                // Registrar movimiento de inventario
+                $producto->inventarioMovimientos()->create([
                     'producto_id' => $producto->id,
                     'tipo' => 'entrada',
                     'cantidad' => $data['stock_actual'],
-                    'user_id' => 1
+                    'user_id' => auth()->user()->id
                 ]);
             }
 
@@ -78,7 +77,7 @@ class ProductoController extends Controller implements HasMiddleware
         }catch(\Throwable $th){
             DB::rollBack();
             if ($path) CloudinaryHelper::delete($path);
-            return redirect()->route('dashboard.productos.index')->with('error', 'Ocurrió un error al crear el producto.');
+            throw $th;
         }
     }
 

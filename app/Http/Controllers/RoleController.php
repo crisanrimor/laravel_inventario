@@ -73,7 +73,7 @@ class RoleController extends Controller implements HasMiddleware
             return redirect()->route('dashboard.roles.index')->with('success', 'El rol ha sido creado con éxito.');
         }catch(\Throwable $th){
             DB::rollBack();
-            return redirect()->route('dashboard.roles.index')->with(['error' => 'Ocurrió un error al crear el rol.']);
+            throw $th;
         }
     }
 

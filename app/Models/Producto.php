@@ -37,6 +37,11 @@ class Producto extends Model
         return $this->hasMany(InventarioMovimiento::class);
     }
 
+    public function inventarioMovimientos()
+    {
+        return $this->morphMany(InventarioMovimiento::class, 'source');
+    }
+
     public function getImagenUrlAttribute()
     {
         return $this->img_path ? 'https://res.cloudinary.com/' . env('CLOUDINARY_CLOUD_NAME') . '/image/upload/' . $this->img_path : Storage::url('default/productos/noimage.png');
