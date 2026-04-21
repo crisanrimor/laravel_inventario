@@ -6,7 +6,7 @@ Aplicación web para la gestión de inventarios que permite administrar compras,
 
 ## 🚀 Demo
 
-> *(Opcional: agrega aquí el enlace cuando lo despliegues en Railway)*
+> https://laravelinventario-production.up.railway.app/ - Usuario: admin@admin.com - Contraseña: admin
 
 ---
 
